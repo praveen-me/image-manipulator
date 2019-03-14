@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import AddImage from './AddImage';
 import {connect} from 'react-redux';
-import ImageResizer from './ImageResizer';
+import ViewConverted from './ViewConverted';
+
 
 class Main extends Component {
   render() {
-    const {image} = this.props;
+    const {currentConvertedUrls} = this.props;
     
     return (
       <main>
         <AddImage />
-        {
-          image ? (
-            <ImageResizer imgHeight={600} imgWidth={300} image={image}/>
-          ) : ''
+        {  
+          currentConvertedUrls && currentConvertedUrls.map((image, i) => (
+            <ViewConverted {...image} key={i}/>
+          ))
         }
       </main>
     );
@@ -21,9 +22,10 @@ class Main extends Component {
 }
 
 function mapStateToProps(state) {
-  const {image} = state;
-  return {
-    image
+  const { currentConvertedUrls } = state;
+
+  return { 
+    currentConvertedUrls
   }
 }
 
