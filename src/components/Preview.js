@@ -13,10 +13,10 @@ const Preview = (props) => {
           <h3 className="center head">Preview</h3>
           {
             currentConvertedUrls.map((image, i) => (
-            <PreviewImage {...image} key={i} />
+            <PreviewImage {...image} index={i} key={i} />
             ))
           }
-          </>
+          </> 
         )
       }
     </section>

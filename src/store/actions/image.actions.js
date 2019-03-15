@@ -1,5 +1,6 @@
-import { SET_IMG_CONVERTED_URL, SUBMIT_FORM, GET_GALLERY } from './types.js'
+import { SET_IMG_CONVERTED_URL, SUBMIT_FORM, GET_GALLERY, CROP_IMAGE } from './types.js'
 import imgConverter from '../../modules/imgConverter.js';
+import cropImage from '../../modules/cropImage.js';
 
 const URI = 'http://localhost:3001'
 
@@ -34,7 +35,7 @@ const imageActions = {
 
     let count = 0;
 
-    // entering every image to clodinary
+    // entering every image to cloudinary
     currentConvertedUrls.forEach((url, i) => {
       cloudinary.v2.uploader.upload(url.url, {
         use_filename: true,
@@ -80,6 +81,22 @@ const imageActions = {
         })
         cb(true)
       })
+  },
+
+  // crop Image
+  cropImage: (imageURL, imageDetails, cb) => (dispatch) => {
+    const {xStart, yStart, xEnd, yEnd, id} = imageDetails;
+    const newURL = cropImage(xStart, yStart, xEnd, yEnd, imageURL);
+    
+    dispatch({
+      type: CROP_IMAGE,
+      image: {
+        newURL, 
+        id 
+      }  
+    })
+
+    cb(true)
   }
 }
 

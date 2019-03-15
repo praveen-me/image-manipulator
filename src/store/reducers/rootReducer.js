@@ -1,4 +1,4 @@
-import { SET_IMG_CONVERTED_URL, SUBMIT_FORM, GET_GALLERY } from "../actions/types";
+import { SET_IMG_CONVERTED_URL, SUBMIT_FORM, GET_GALLERY, CROP_IMAGE } from "../actions/types";
 
 // setting initial state
 const initState = {
@@ -50,6 +50,19 @@ function rootReducer (state = initState, action) {
         ...state,
         gallery: action.gallery
       }
+    }
+
+    case CROP_IMAGE: {
+      const {newURL, id} = action.image;
+      
+      const allUrls = [...state.currentConvertedUrls];
+      allUrls[id].url = newURL;
+
+      return {
+        ...state,
+        currentConvertedUrls: allUrls
+      }
+      
     }
     
     default: return state;
