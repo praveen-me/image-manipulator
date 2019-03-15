@@ -42,8 +42,7 @@ const imageActions = {
       cloudinary.v2.uploader.upload(url.url, {
         use_filename: true,
         resource_type : "image"
-      }, (err, url) => {
-        
+      }, (err, url) => {        
         currentConvertedUrls[i].url = url.secure_url;
         count++;
 

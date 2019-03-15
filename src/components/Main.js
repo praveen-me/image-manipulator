@@ -1,17 +1,41 @@
 import React, { Component } from 'react';
 import AddImage from './AddImage';
 import {connect} from 'react-redux';
-import { Link } from 'react-router-dom';
 import Preview from './Preview';
 
+import imageActions from '../store/actions/image.actions';
 
 class Main extends Component {
-  render() {
+  state = {
+    isLoading: false
+  }
+
+  handleSubmit = e => {
+    e.preventDefault();
     
+    this.setState({
+      isLoading : true
+    }, () => {
+      this.props.dispatch(imageActions.submitForm((dataStatus) => {
+        if(dataStatus) {
+          this.props.history.push('/gallery')
+        }
+      }))
+    })
+  }
+
+  render() {
+    const { isLoading } = this.state;
     return (
       <main>
-        <AddImage />
-        <Preview />
+        {
+          isLoading ? <p>Loading...</p> : (
+            <>
+              <AddImage atSubmit={this.handleSubmit}/>
+              <Preview />
+            </>
+          )
+        }
       </main>
     );
   }

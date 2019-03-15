@@ -49,26 +49,16 @@ class AddImage extends Component {
   }
 
   // Submitting the form for final view
-  handleSubmit = e => {
-    e.preventDefault();
-    
-    this.props.dispatch(imageActions.submitForm((dataStatus) => {
-      if(dataStatus) {
-        this.props.history.push('/gallery')
-      }
-    }))
-  }
-  
-
   render() {
     const { err } = this.state;
+    const { atSubmit } = this.props;
     
     return (
       <div className="form-container center wrapper">
         <h3 className="form-head">Upload Image (Image Resolution should be 1024 X 1024)</h3>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={(e) => atSubmit(e)}>
           <input type="file" accept="image/png, image/jpeg" onChange={this.handleChange}/>
-          <button onClick={this.handleSubmit}>Submit</button>
+          <button onClick={(e) => atSubmit(e)}>Submit</button>
         </form>
         {
           err ? <p className="err">{err}</p> : ''

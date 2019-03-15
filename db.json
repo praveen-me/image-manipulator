@@ -3,27 +3,27 @@
     {
       "urls": [
         {
-          "url": "https://res.cloudinary.com/praveen-me/image/upload/v1552640966/zshxhqqyfvohaluca3ik.png",
+          "url": "https://res.cloudinary.com/praveen-me/image/upload/v1552648517/zmuzucc8rel0lmzehitw.png",
           "name": "correct-img-Horizontal",
           "type": "Horizontal"
         },
         {
-          "url": "https://res.cloudinary.com/praveen-me/image/upload/v1552640964/ssbwjcbnms56dryff2ha.png",
+          "url": "https://res.cloudinary.com/praveen-me/image/upload/v1552648516/blycx13lik7wpvt8e0k9.png",
           "name": "correct-img-Vertical",
           "type": "Vertical"
         },
         {
-          "url": "https://res.cloudinary.com/praveen-me/image/upload/v1552640963/ldicxewmljptlx285d2h.png",
+          "url": "https://res.cloudinary.com/praveen-me/image/upload/v1552648514/h5wnyfgsmwgdhetkaese.png",
           "name": "correct-img-Horizontal Small",
           "type": "Horizontal Small"
         },
         {
-          "url": "https://res.cloudinary.com/praveen-me/image/upload/v1552640965/xyz879hig3ilgxaxjlv0.png",
+          "url": "https://res.cloudinary.com/praveen-me/image/upload/v1552648515/j1okx2rcf6jiwllfe6to.png",
           "name": "correct-img-Gallery",
           "type": "Gallery"
         }
       ],
-      "createdAt": "2019-03-15T09:09:26.701Z",
+      "createdAt": "2019-03-15T11:15:17.562Z",
       "id": 1
     }
   ]

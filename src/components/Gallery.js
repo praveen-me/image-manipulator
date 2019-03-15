@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, lazy, Suspense } from 'react';
 import { connect } from 'react-redux';
 import imageActions from '../store/actions/image.actions';
-import Image from './Image';
-import { Link } from 'react-router-dom';
+
+const Image = lazy(() => import('./Image'));
 
 class Gallery extends Component {
   state = {
@@ -32,11 +32,10 @@ class Gallery extends Component {
             gallery && gallery.map(val => (
               <React.Fragment key={val.createdAt}>
                 {
-                  console.log(val)
-                }
-                {
                   val.urls.map((url, i) => (
-                    <Image { ...url } createdAt={val.createdAt} key={i}/>
+                    <Suspense class="fallback">
+                      <Image { ...url } createdAt={val.createdAt} key={i}/>
+                    </Suspense>
                   ))
                 }
               </React.Fragment>
