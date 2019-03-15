@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {  connect } from 'react-redux';
 import imageActions from '../store/actions/image.actions';
+import { withRouter } from 'react-router-dom';
+
 
 class AddImage extends Component {
   state = {
@@ -83,4 +85,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(AddImage);
+export default connect(mapStateToProps)(withRouter(AddImage));

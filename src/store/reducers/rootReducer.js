@@ -46,7 +46,10 @@ function rootReducer (state = initState, action) {
     }
 
     case SUBMIT_FORM: {
-      return state
+      return {
+        ...state, 
+        currentConvertedUrls : null
+      }
     }
 
     case GET_GALLERY: {
