@@ -1,4 +1,4 @@
-import { SET_IMAGE_FILE, SET_IMG_CONVERTED_URL, SUBMIT_FORM } from './types.js'
+import { SET_IMAGE_FILE, SET_IMG_CONVERTED_URL, SUBMIT_FORM, GET_GALLERY } from './types.js'
 import imgConverter from '../../modules/imgConverter.js';
 
 const imageActions = {
@@ -45,6 +45,18 @@ const imageActions = {
           })      
           cb(true)
         }
+      })
+  },
+
+  getGallery: (cb) => (dispatch) => {
+    fetch(`http://localhost:3001/gallery`)
+      .then(res => res.json())
+      .then(gallery => {
+        dispatch({
+          type: GET_GALLERY,
+          gallery,
+        })
+        cb(true)
       })
   }
 }
