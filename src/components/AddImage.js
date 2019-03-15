@@ -62,14 +62,14 @@ class AddImage extends Component {
     const { err } = this.state;
     
     return (
-      <div className="form-container">
-        <h3>Upload Image</h3>
+      <div className="form-container center wrapper">
+        <h3 className="form-head">Upload Image (Image Resolution should be 1024 X 1024)</h3>
         <form onSubmit={this.handleSubmit}>
           <input type="file" accept="image/png, image/jpeg" onChange={this.handleChange}/>
           <button onClick={this.handleSubmit}>Submit</button>
         </form>
         {
-          err ? <p>{err}</p> : ''
+          err ? <p className="err">{err}</p> : ''
         }
       </div>
     );

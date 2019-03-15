@@ -25,9 +25,8 @@ class Gallery extends Component {
     const { gallery } = this.props;
 
     return (
-      <div>
-        <Link to="/">Add Image</Link>
-        <h3>Gallery</h3>
+      <div className="wrapper">
+        <h2 className="center head">Gallery</h2>
         {
           isLoading ? <p>Loading...</p> : (
             gallery && gallery.map(val => (

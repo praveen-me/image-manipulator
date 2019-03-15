@@ -11,7 +11,7 @@ class Preview extends Component {
         {  
           currentConvertedUrls && (
             <>
-            <h3>Preview</h3>
+            <h3 className="center head">Preview</h3>
             {
               currentConvertedUrls.map((image, i) => (
               <PreviewImage {...image} key={i} />

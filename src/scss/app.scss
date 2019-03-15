@@ -1,0 +1,58 @@
+// Importing normalize
+@import'./_normalize';
+
+// Importing External Fonts
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700|Roboto+Slab:300,400,700|Roboto:300,400,400i,500,700,900');
+
+// Importing variables
+@import'./_vars';
+
+// Importing base
+@import'./base';
+
+// Header Style
+header {
+  h1 {
+    font-family: $font2;
+  }
+  padding: 1rem 0;
+  background: rgba(0, 0, 0, .6);
+  color: #fff;
+  a {
+    color: #fff;
+
+  }
+}
+
+.head {
+  margin: 1rem 0;
+  font-size: 1.8rem;
+  font-weight: 400;
+}
+
+.image-block {
+  margin: 1rem 0;
+}
+
+h4 {
+  font-size: 1.3rem;
+  font-weight: 300;
+  margin: 0.5rem 0;
+}
+
+.form-head {
+  font-weight: 300;
+  margin: 1rem 0;
+}
+
+.err {
+  color: red;
+}
+
+.preview-block {
+  margin: 1rem 0;
+}
+
+.preview-head{
+  font-size: 1.2rem;
+}

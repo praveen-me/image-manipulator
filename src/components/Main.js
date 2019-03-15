@@ -10,7 +10,6 @@ class Main extends Component {
     
     return (
       <main>
-        <Link to="/gallery">Gallery</Link>
         <AddImage />
         <Preview />
       </main>
