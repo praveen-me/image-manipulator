@@ -1,6 +1,9 @@
-import { SET_IMAGE_FILE, SET_IMG_CONVERTED_URL, SUBMIT_FORM, GET_GALLERY } from './types.js'
+import { SET_IMG_CONVERTED_URL, SUBMIT_FORM, GET_GALLERY } from './types.js'
 import imgConverter from '../../modules/imgConverter.js';
 
+const URI = 'http://localhost:3001'
+
+// cloudinary configuration
 const cloudinary = require('cloudinary/lib/cloudinary')
 
 cloudinary.config({
@@ -10,13 +13,6 @@ cloudinary.config({
 });
 
 const imageActions = {
-  setImageFile: (image) => {
-    return {
-      type: SET_IMAGE_FILE,
-      image
-    }
-  },
-
   setImgConvertedUrls : (image, name) => (dispatch, getState) => {
     const { imgResolutions } = getState(); 
 
@@ -38,16 +34,20 @@ const imageActions = {
 
     let count = 0;
 
+    // entering every image to clodinary
     currentConvertedUrls.forEach((url, i) => {
       cloudinary.v2.uploader.upload(url.url, {
         use_filename: true,
         resource_type : "image"
       }, (err, url) => {        
+
+        // changing url with the cloud url
         currentConvertedUrls[i].url = url.secure_url;
         count++;
 
         if (count === 4) {
-          fetch(`http://localhost:3001/gallery`, {
+          // sending data into DB if every image uploaded
+          fetch(`${URI}/gallery`, {
             method: 'POST',
             headers: {
               'content-type' : 'application/json'
@@ -71,7 +71,7 @@ const imageActions = {
   },
 
   getGallery: (cb) => (dispatch) => {
-    fetch(`http://localhost:3001/gallery`)
+    fetch(`${URI}/gallery`)
       .then(res => res.json())
       .then(gallery => {
         dispatch({

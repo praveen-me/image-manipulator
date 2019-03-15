@@ -1,5 +1,6 @@
-import { SET_IMAGE_FILE, SET_IMG_CONVERTED_URL, SUBMIT_FORM, GET_GALLERY } from "../actions/types";
+import { SET_IMG_CONVERTED_URL, SUBMIT_FORM, GET_GALLERY } from "../actions/types";
 
+// setting initial state
 const initState = {
   imgResolutions : [
     {
@@ -30,14 +31,6 @@ const initState = {
 function rootReducer (state = initState, action) {
   switch(action.type) {
 
-    // Set Valid Image Into Reducer
-    case SET_IMAGE_FILE : {
-      return {
-        ...state,
-        image : action.image
-      }
-    }
-
     case SET_IMG_CONVERTED_URL : {
       return {
         ...state,
@@ -53,7 +46,6 @@ function rootReducer (state = initState, action) {
     }
 
     case GET_GALLERY: {
-      // console.log;
       return {
         ...state,
         gallery: action.gallery

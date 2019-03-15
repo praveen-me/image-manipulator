@@ -10,9 +10,9 @@ class AddImage extends Component {
   }
 
   handleChange = e => {
-    // Checking for the file extension
     const {value, files} = e.target;
 
+    // Checking for the file extension
     if(/.(jpeg|jpg|png)$/.test(value)) {
       const file = files[0];
       const fileName = value.slice(12, -4);
@@ -28,11 +28,15 @@ class AddImage extends Component {
 
         newImage.onload = (e) => {       
           const { height, width} = e.target;
-
+          // Checking File Size
           if(height === 1024 && height === 1024) {
           
             // Dispatch action for creating converted urls
-            this.props.dispatch(imageActions.setImgConvertedUrls(newImage, fileName))
+            this.setState({
+              err: ''
+            }, () => {
+              this.props.dispatch(imageActions.setImgConvertedUrls(newImage, fileName))
+            })
     
           }else {
             this.setState({

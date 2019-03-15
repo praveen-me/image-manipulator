@@ -1,6 +1,7 @@
 import React, { Component, lazy, Suspense } from 'react';
 import { connect } from 'react-redux';
 import imageActions from '../store/actions/image.actions';
+import { Link } from 'react-router-dom';
 
 const Image = lazy(() => import('./Image'));
 
@@ -29,17 +30,24 @@ class Gallery extends Component {
         <h2 className="center head">Gallery</h2>
         {
           isLoading ? <p>Loading...</p> : (
-            gallery && gallery.map(val => (
-              <React.Fragment key={val.createdAt}>
-                {
-                  val.urls.map((url, i) => (
-                    <Suspense class="fallback">
-                      <Image { ...url } createdAt={val.createdAt} key={i}/>
-                    </Suspense>
-                  ))
-                }
-              </React.Fragment>
-            ))            
+            gallery && gallery.length ? (
+              gallery.map(val => (
+                <React.Fragment key={val.createdAt}>
+                    {
+                      val.urls.map((url, i) => (
+                        <Suspense class="fallback" key={i}>
+                          <Image { ...url } createdAt={val.createdAt}/>
+                        </Suspense>
+                      ))
+                    }
+                  </React.Fragment>
+                ))           
+            ) : (
+              <div className="info wrapper center">
+                <p>No Images Found. Please Upload Images</p>
+                <Link to="/" className="btn">Upload Images</Link>
+              </div>
+            )
           )
         }
       </div>
@@ -49,7 +57,7 @@ class Gallery extends Component {
 
 function mapStateToProps(state) {
   const { gallery } = state;
-  console.log(gallery);
+
   return { gallery };
 }
 

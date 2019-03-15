@@ -1,5 +1,3 @@
-export const SET_IMAGE_FILE = 'SET_IMAGE_FILE';
-
 export const SET_IMG_CONVERTED_URL = 'SET_IMG_CONVERTED_URL'; 
 
 export const SUBMIT_FORM = 'SUBMIT_FORM';

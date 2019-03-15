@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import AddImage from './AddImage';
 import {connect} from 'react-redux';
+
+import AddImage from './AddImage';
 import Preview from './Preview';
 
 import imageActions from '../store/actions/image.actions';
@@ -10,14 +11,18 @@ class Main extends Component {
     isLoading: false
   }
 
+  // for submitting images finally
   handleSubmit = e => {
     e.preventDefault();
     
+    // first setting isLoading : true for loader
     this.setState({
       isLoading : true
     }, () => {
+      // Dispatching action for submitting images
       this.props.dispatch(imageActions.submitForm((dataStatus) => {
         if(dataStatus) {
+          // After posting successful request redirect to gallery
           this.props.history.push('/gallery')
         }
       }))

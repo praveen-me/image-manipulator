@@ -14,12 +14,12 @@ class App extends Component {
       <BrowserRouter>
         <>
           <Header />
-          <Switch>
-            <Suspense fallback={'Loading...'}>
-              <Route path="/" exact component={ Main } />
-              <Route path="/gallery" component={ Gallery } />
-            </Suspense>
-          </Switch>
+          <Suspense fallback={'Loading...'}>
+            <Switch>
+                <Route path="/" exact component={ Main } />
+                <Route path="/gallery" component={ Gallery } />
+            </Switch>
+          </Suspense>
         </>
       </BrowserRouter>
     );
