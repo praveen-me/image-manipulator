@@ -1,21 +1,18 @@
 import React, { Component } from 'react';
 import AddImage from './AddImage';
 import {connect} from 'react-redux';
-import ViewConverted from './ViewConverted';
+import { Link } from 'react-router-dom';
+import Preview from './Preview';
 
 
 class Main extends Component {
   render() {
-    const {currentConvertedUrls} = this.props;
     
     return (
       <main>
+        <Link to="/gallery">Gallery</Link>
         <AddImage />
-        {  
-          currentConvertedUrls && currentConvertedUrls.map((image, i) => (
-            <ViewConverted {...image} key={i}/>
-          ))
-        }
+        <Preview />
       </main>
     );
   }

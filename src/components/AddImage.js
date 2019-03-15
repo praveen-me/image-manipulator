@@ -9,15 +9,18 @@ class AddImage extends Component {
 
   handleChange = e => {
     // Checking for the file extension
-    if(/.(jpeg|jpg|png)$/.test(e.target.value)) {
-      const file = e.target.files[0];
-      const fileName = e.target.value;
+    const {value, files} = e.target;
 
+    if(/.(jpeg|jpg|png)$/.test(value)) {
+      const file = files[0];
+      const fileName = value.slice(12, -4);
+      
       // Creating a new File reader
       const reader = new FileReader();
       reader.readAsDataURL(file);
 
       reader.onload = (e) => {
+        // Creating a new Image constructor
         const newImage  = new Image();
         newImage.src = e.target.result;
 
@@ -26,6 +29,7 @@ class AddImage extends Component {
 
           if(height === 1024 && height === 1024) {
           
+            // Dispatch action for creating converted urls
             this.props.dispatch(imageActions.setImgConvertedUrls(newImage, fileName))
     
           }else {
@@ -41,15 +45,28 @@ class AddImage extends Component {
       })
     }
   }
+
+  // Submitting the form for final view
+  handleSubmit = e => {
+    e.preventDefault();
+    
+    this.props.dispatch(imageActions.submitForm((dataStatus) => {
+      if(dataStatus) {
+        this.props.history.push('/gallery')
+      }
+    }))
+  }
   
+
   render() {
     const { err } = this.state;
     
     return (
       <div className="form-container">
         <h3>Upload Image</h3>
-        <form >
+        <form onSubmit={this.handleSubmit}>
           <input type="file" accept="image/png, image/jpeg" onChange={this.handleChange}/>
+          <button onClick={this.handleSubmit}>Submit</button>
         </form>
         {
           err ? <p>{err}</p> : ''

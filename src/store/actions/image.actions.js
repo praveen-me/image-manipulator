@@ -1,4 +1,4 @@
-import { SET_IMAGE_FILE, SET_IMG_CONVERTED_URL } from './types.js'
+import { SET_IMAGE_FILE, SET_IMG_CONVERTED_URL, SUBMIT_FORM } from './types.js'
 import imgConverter from '../../modules/imgConverter.js';
 
 const imageActions = {
@@ -11,16 +11,41 @@ const imageActions = {
 
   setImgConvertedUrls : (image, name) => (dispatch, getState) => {
     const { imgResolutions } = getState(); 
-     const convertedUrls = imgResolutions.map(({ height, width , type}) => ({
-       url : imgConverter(height, width, image),
-       name : `${name}-${type}`,
-       type
-     }));
 
-      return dispatch({
-        type : SET_IMG_CONVERTED_URL,
-        urls: convertedUrls
-      })    
+    // Creating new Array with all the converted URLS
+    const convertedUrls = imgResolutions.map(({ height, width , type}) => ({
+      url : imgConverter(height, width, image),
+      name : `${name}-${type}`,
+      type
+    }));
+
+    return dispatch({
+      type : SET_IMG_CONVERTED_URL,
+      urls: convertedUrls
+    })    
+  },
+
+  submitForm : (cb) => (dispatch, getState) => {
+    const { currentConvertedUrls } = getState();
+
+    fetch(`http://localhost:3001/gallery`, {
+      method: 'POST',
+      headers: {
+        'content-type' : 'application/json'
+      },
+      body: JSON.stringify({
+        urls: currentConvertedUrls,
+        createdAt: new Date(),
+      })
+    })
+      .then(res => {
+        if(res.status === 201) {
+          dispatch({
+            type: SUBMIT_FORM
+          })      
+          cb(true)
+        }
+      })
   }
 }
 

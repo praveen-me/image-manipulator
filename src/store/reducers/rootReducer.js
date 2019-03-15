@@ -1,7 +1,6 @@
-import { SET_IMAGE_FILE, SET_IMG_CONVERTED_URL } from "../actions/types";
+import { SET_IMAGE_FILE, SET_IMG_CONVERTED_URL, SUBMIT_FORM } from "../actions/types";
 
 const initState = {
-  image: null, 
   imgResolutions : [
     {
       height : 450,
@@ -24,7 +23,8 @@ const initState = {
       type: 'Gallery'
     }
   ],
-  currentConvertedUrls: []
+  currentConvertedUrls: null,
+  images: null
 }
 
 function rootReducer (state = initState, action) {
@@ -43,6 +43,10 @@ function rootReducer (state = initState, action) {
         ...state,
         currentConvertedUrls: action.urls
       }
+    }
+
+    case SUBMIT_FORM: {
+      return state
     }
     
     default: return state;

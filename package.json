@@ -3,7 +3,10 @@
   "version": "1.1.0",
   "private": false,
   "dependencies": {
+    "cloudinary": "^1.13.2",
+    "json-server": "^0.14.2",
     "node-sass": "^4.11.0",
+    "npm-run-all": "^4.1.5",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-redux": "^6.0.0",
@@ -13,7 +16,9 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "npm-run-all --parallel dev json:server",
+    "dev": "react-scripts start",
+    "json:server": "json-server --watch db.json --port 3001",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
