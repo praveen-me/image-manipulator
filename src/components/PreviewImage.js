@@ -38,6 +38,7 @@ class PreviewImage extends Component {
 
   render() {
     const { url, type, name } = this.props;
+    const {xStart, xEnd, yStart, yEnd} = this.state;
 
     return (
       <div className="center preview-block">
@@ -45,26 +46,38 @@ class PreviewImage extends Component {
         <img src={url} alt={name}/>
         <p>Crop Image</p>
         <form onSubmit={this.handleSubmit} className="previewForm">
-          <input 
-          type="number" 
-          placeholder="xStart"
-          name="xStart"
-          onChange={this.handleChange}/>
-          <input 
-          type="number" 
-          placeholder="xEnd"
-          name="xEnd"
-          onChange={this.handleChange}/>
-          <input 
-          type="number" 
-          placeholder="yStart"
-          name="yStart"
-          onChange={this.handleChange}/>
-          <input 
-          type="number" 
-          placeholder="yEnd"
-          name="yEnd"
-          onChange={this.handleChange}/>
+          <div className="label-block">
+            <label htmlFor="xStart">xStart</label>
+            <input 
+            type="number" 
+            value={xStart}
+            name="xStart"
+            onChange={this.handleChange}/>
+          </div>
+          <div className="label-block">
+            <label htmlFor="yStart">yStart</label>
+            <input 
+            type="number" 
+            value={yStart}
+            name="yStart"
+            onChange={this.handleChange}/>
+          </div>
+          <div className="label-block">
+            <label htmlFor="xEnd">xEnd</label>
+            <input 
+            type="number" 
+            value={xEnd}
+            name="xEnd"
+            onChange={this.handleChange}/>
+          </div>
+          <div className="label-block">
+            <label htmlFor="yEnd">yEnd</label>
+            <input 
+            type="number" 
+            value={yEnd}
+            name="yEnd"
+            onChange={this.handleChange}/>
+          </div>
           <button type="submit" onClick={this.handleSubmit}>Crop</button>  
         </form>
       </div>

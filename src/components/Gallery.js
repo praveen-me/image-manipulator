@@ -25,8 +25,9 @@ class Gallery extends Component {
     const { isLoading } = this.state;
     const { gallery } = this.props;
 
-    let displayGallery = []
+    let displayGallery = [];
 
+    // show latest images on top
     if (!isLoading && gallery.length) {
       displayGallery = [...gallery.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())]
     } else {
@@ -43,7 +44,7 @@ class Gallery extends Component {
                 <React.Fragment key={val.createdAt}>
                     {
                       val.urls.map((url, i) => (
-                        <Suspense class="fallback" key={i}>
+                        <Suspense fallback={"Loading..."} key={i}>
                           <Image { ...url } createdAt={val.createdAt}/>
                         </Suspense>
                       ))
