@@ -25,6 +25,32 @@
       ],
       "createdAt": "2019-03-15T13:06:12.999Z",
       "id": 1
+    },
+    {
+      "urls": [
+        {
+          "url": "https://res.cloudinary.com/praveen-me/image/upload/v1552716483/arn4xeji8wkyn4jvdbmr.png",
+          "name": "correct-img-2-Horizontal",
+          "type": "Horizontal"
+        },
+        {
+          "url": "https://res.cloudinary.com/praveen-me/image/upload/v1552716476/dxpgjzzhi1thkeg7rgy9.png",
+          "name": "correct-img-2-Vertical",
+          "type": "Vertical"
+        },
+        {
+          "url": "https://res.cloudinary.com/praveen-me/image/upload/v1552716481/etpzhxiw8dynjkgqwn4o.png",
+          "name": "correct-img-2-Horizontal Small",
+          "type": "Horizontal Small"
+        },
+        {
+          "url": "https://res.cloudinary.com/praveen-me/image/upload/v1552716478/libbh5rji5tkx0sl8ppq.png",
+          "name": "correct-img-2-Gallery",
+          "type": "Gallery"
+        }
+      ],
+      "createdAt": "2019-03-16T06:08:04.425Z",
+      "id": 2
     }
   ]
 }

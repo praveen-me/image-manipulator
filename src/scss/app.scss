@@ -56,3 +56,13 @@ h4 {
 .preview-head{
   font-size: 1.2rem;
 }
+
+.previewForm {
+  display: flex;
+  width: 500px;
+  margin: 0 auto;
+  justify-content: center;
+  input {
+    width: 100px;
+  }
+}

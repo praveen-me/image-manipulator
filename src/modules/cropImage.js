@@ -1,5 +1,6 @@
 // converts image into specific size
-const cropImage = (xStart, yStart, xEnd, yEnd, image) => {
+const cropImage = (xStart = 0, yStart = 0, xEnd = 0, yEnd = 0, image) => {
+  // let newSrc = '';
   const newImage = new Image();
   newImage.src = image;
   

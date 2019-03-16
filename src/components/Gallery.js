@@ -25,13 +25,21 @@ class Gallery extends Component {
     const { isLoading } = this.state;
     const { gallery } = this.props;
 
+    let displayGallery = []
+
+    if (!isLoading && gallery.length) {
+      displayGallery = [...gallery.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())]
+    } else {
+      displayGallery = []
+    }
+
     return (
       <div className="wrapper">
         <h2 className="center head">Gallery</h2>
         {
           isLoading ? <p>Loading...</p> : (
-            gallery && gallery.length ? (
-              gallery.map(val => (
+            displayGallery && displayGallery.length ? (
+              displayGallery.map(val => (
                 <React.Fragment key={val.createdAt}>
                     {
                       val.urls.map((url, i) => (
