@@ -2,6 +2,7 @@ import React, { Component, lazy, Suspense } from 'react';
 import { connect } from 'react-redux';
 import imageActions from '../store/actions/image.actions';
 import { Link } from 'react-router-dom';
+import Loader from './Loader';
 
 const Image = lazy(() => import('./Image'));
 
@@ -38,13 +39,13 @@ class Gallery extends Component {
       <div className="wrapper">
         <h2 className="center head">Gallery</h2>
         {
-          isLoading ? <p>Loading...</p> : (
+          isLoading ? <Loader /> : (
             displayGallery && displayGallery.length ? (
               displayGallery.map(val => (
                 <React.Fragment key={val.createdAt}>
                     {
                       val.urls.map((url, i) => (
-                        <Suspense fallback={"Loading..."} key={i}>
+                        <Suspense fallback={<Loader />} key={i}>
                           <Image { ...url } createdAt={val.createdAt}/>
                         </Suspense>
                       ))

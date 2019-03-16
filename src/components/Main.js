@@ -5,6 +5,7 @@ import AddImage from './AddImage';
 import Preview from './Preview';
 
 import imageActions from '../store/actions/image.actions';
+import Loader from './Loader';
 
 class Main extends Component {
   state = {
@@ -34,7 +35,7 @@ class Main extends Component {
     return (
       <main>
         {
-          isLoading ? <p>Loading...</p> : (
+          isLoading ? <Loader /> : (
             <>
               <AddImage atSubmit={this.handleSubmit}/>
               <Preview />
